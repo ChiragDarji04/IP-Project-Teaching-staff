@@ -52,9 +52,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Check if username exists, if yes then verify password
                 if(mysqli_stmt_num_rows($stmt) == 1){                    
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                    mysqli_stmt_bind_result($stmt, $id, $username, $password);
                     if(mysqli_stmt_fetch($stmt)){
-                        if(password_verify($password, $hashed_password)){
+                        if ($_POST['password'] === $password) {
                             // Password is correct, so start a new session
                             session_start();
                             
@@ -242,12 +242,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         <div class="d-flex justify-content-center mt-3 login_container form-group">
                             <input type="submit" class="btn btn-primary login_btn" value="Login">
                         </div>
-                        <div class="mt-4">
-                            <div class="d-flex justify-content-center links">
-                                <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
-                            </div>
-
-                        </div>
+                       
                     </form>
                 </div>
             </div>

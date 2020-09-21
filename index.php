@@ -20,6 +20,7 @@ session_start();
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="main.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="sweetalert.min.js"></script>
 
 
     <style>
@@ -1105,12 +1106,26 @@ $eduresult = mysqli_query($link,$education);
     }
     </script>
     <?php 
+        if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+            echo "<script> $(document).ready(function(){
+                $('.btn-outline-info').click(function () {
+                        event.preventDefault();
+                        swal({
+                            title: 'Please Register',
+                            text: 'Register To View Document',
+                            icon: 'info',
+                            button: 'Ok!',
+                          });
+              });
+            
+            });</script>";
+        }
+    ?>
+
+    <?php 
   mysqli_close($link);
 
   ?>
-
-
-
 </body>
 
 </html>

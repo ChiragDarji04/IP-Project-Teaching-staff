@@ -23,9 +23,9 @@ session_start();
 
 
     <style>
-        a:hover {
-            text-decoration: none;
-        }
+    a:hover {
+        text-decoration: none;
+    }
     </style>
 </head>
 
@@ -230,7 +230,7 @@ session_start();
                 <ul>
                     <li>
                         <p>Letter of approved PG (Post Graduate) Teacher for M.E. (Computer Engg).
-                            <span><a href="docs/ME_Letter1.pdf" target="_blank"
+                            <span><a href="docs/ME_Letter1.pdf#toolbar=0" target="_blank"
                                     class="btn btn-outline-info btn-sm">View</a></span>
                         </p>
                     </li>
@@ -313,7 +313,10 @@ $eduresult = mysqli_query($link,$education);
                             <td><?php echo $row["Year"]; ?></td>
                             <td><?php echo $row["Percentage"]; ?>%</td>
                             <td><?php echo $row["Projects"]; ?></td>
-                            <td><?php echo $row["View"]; ?></td>
+                            <td><a <?php if($row["View"]==''){echo "style='display:none'"; }?>
+                                    href="<?php echo $row["View"]?>#toolbar=0" target="_blank"
+                                    class="btn btn-outline-info btn-sm">View</a></td>
+
                         </tr>
                         <?php
                         }
@@ -358,7 +361,9 @@ $eduresult = mysqli_query($link,$education);
                             <td><?php echo $row["Institute"]; ?></td>
                             <td><?php echo $row["Designation"]; ?></td>
                             <td><?php echo $row["Period"]; ?></td>
-                            <td><?php echo $row["View"]; ?></td>
+                            <td><a <?php if($row["View"]==''){echo "style='display:none'"; }?>
+                                    href="<?php echo $row["View"]?>#toolbar=0" target="_blank"
+                                    class="btn btn-outline-info btn-sm">View</a></td>
                         </tr>
                         <?php
                         }
@@ -524,7 +529,8 @@ $eduresult = mysqli_query($link,$education);
                             <td><?php echo $row["Place"]; ?></td>
 
                             <td><?php echo $row["Year"]; ?></td>
-                            <td><a href=<?php echo $row["View"]; ?>#toolbar=0 target="_blank"
+                            <td><a <?php if($row["View"]==''){echo "style='display:none'"; }?>
+                                    href="<?php echo $row["View"]?>#toolbar=0" target="_blank"
                                     class="btn btn-outline-info btn-sm">View</a></td>
                         </tr>
 
@@ -580,7 +586,8 @@ $eduresult = mysqli_query($link,$education);
                             <td><?php echo $row["Page"]; ?></td>
                             <td><?php echo $row["Factor"]; ?></td>
                             <td><?php echo $row["Year"]; ?></td>
-                            <td><a href=<?php echo $row["View"]; ?>#toolbar=0 target="_blank"
+                            <td><a <?php if($row["View"]==''){echo "style='display:none'"; }?>
+                                    href="<?php echo $row["View"]?>#toolbar=0" target="_blank"
                                     class="btn btn-outline-info btn-sm">View</a></td>
                         </tr>
 
@@ -629,7 +636,8 @@ $eduresult = mysqli_query($link,$education);
                             <td><?php echo $srno; ?></td>
                             <td><?php echo $row["Interaction"]; ?></td>
                             <td><?php echo $row["Year"]; ?></td>
-                            <td><a href=<?php echo $row["View"]; ?>#toolbar=0 target="_blank"
+                            <td><a <?php if($row["View"]==''){echo "style='display:none'"; }?>
+                                    href="<?php echo $row["View"]?>#toolbar=0" target="_blank"
                                     class="btn btn-outline-info btn-sm">View</a></td>
                         </tr>
                         <?php
@@ -686,7 +694,8 @@ $eduresult = mysqli_query($link,$education);
                             <td><?php echo $row["Program"]; ?></td>
                             <td><?php echo $row["Agency"]; ?></td>
                             <td><?php echo $row["Duration"]; ?></td>
-                            <td><a href=<?php echo $row["View"]; ?>#toolbar=0 target="_blank"
+                            <td><a <?php if($row["View"]==''){echo "style='display:none'"; }?>
+                                    href="<?php echo $row["View"]?>#toolbar=0" target="_blank"
                                     class="btn btn-outline-info btn-sm">View</a></td>
                         </tr>
                         <?php
@@ -742,7 +751,8 @@ $eduresult = mysqli_query($link,$education);
                             <td><?php echo $row["Program"]; ?></td>
                             <td><?php echo $row["Agency"]; ?></td>
                             <td><?php echo $row["Duration"]; ?></td>
-                            <td><a href=<?php echo $row["View"]; ?>#toolbar=0 target="_blank"
+                            <td><a <?php if($row["View"]==''){echo "style='display:none'"; }?>
+                                    href="<?php echo $row["View"]?>#toolbar=0" target="_blank"
                                     class="btn btn-outline-info btn-sm">View</a></td>
                         </tr>
                         <?php
@@ -792,7 +802,8 @@ $eduresult = mysqli_query($link,$education);
                             <td><?php echo $row["Name"]; ?></td>
                             <td><?php echo $row["Duration"]; ?></td>
                             <td><?php echo $row["Session"]; ?></td>
-                            <td><a href=<?php echo $row["View"]; ?>#toobar=0 target="_blank"
+                            <td><a <?php if($row["View"]==''){echo "style='display:none'"; }?>
+                                    href="<?php echo $row["View"]?>#toolbar=0" target="_blank"
                                     class="btn btn-outline-info btn-sm">View</a></td>
                         </tr>
                         <?php
@@ -841,7 +852,8 @@ $eduresult = mysqli_query($link,$education);
                             <td><?php echo $srno; ?></td>
                             <td><?php echo $row["Program"]; ?></td>
                             <td><?php echo $row["Year"]; ?></td>
-                            <td><a href=<?php echo $row["View"]; ?>#toolbar=0 target="_blank"
+                            <td><a <?php if($row["View"]==''){echo "style='display:none'"; }?>
+                                    href="<?php echo $row["View"]?>#toolbar=0" target="_blank"
                                     class="btn btn-outline-info btn-sm">View</a></td>
                         </tr>
                         <?php
@@ -888,7 +900,8 @@ $eduresult = mysqli_query($link,$education);
                         <tr>
                             <td><?php echo $srno; ?></td>
                             <td><?php echo $row["Membership"]; ?></td>
-                            <td><a href=<?php echo $row["View"]; ?>#toolbar=0 target="_blank"
+                            <td><a <?php if($row["View"]==''){echo "style='display:none'"; }?>
+                                    href="<?php echo $row["View"]?>#toolbar=0" target="_blank"
                                     class="btn btn-outline-info btn-sm">View</a></td>
                         </tr>
                         <?php
@@ -1022,10 +1035,7 @@ $eduresult = mysqli_query($link,$education);
                 <div class="col-md-8 col-sm-6 col-xs-12">
                     <p class="copyright-text">Copyright © 2020 Yogesh Pingle . All Rights Reserved.
                     </p>
-                    <!-- Badge Code - Do Not Change The Code -->
 
-
-                    <!-- Badge Code End Here -->
                 </div>
 
                 <div class="col-md-4 col-sm-6 col-xs-12">
@@ -1070,29 +1080,29 @@ $eduresult = mysqli_query($link,$education);
     <script src="main.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://visitorshitcounter.com/js/badgess.js?v=1600537360"></script>
     <script>
-        $('body').css('padding-top', $('.navbar').outerHeight() + 'px')
+    $('body').css('padding-top', $('.navbar').outerHeight() + 'px')
 
-        if ($('.smart-scroll').length > 0) {
-            var last_scroll_top = 0;
-            $(window).on('scroll', function () {
-                scroll_top = $(this).scrollTop();
-                if (scroll_top < last_scroll_top) {
-                    $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
-                } else {
-                    $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
-                }
-                last_scroll_top = scroll_top;
-            });
-        }
+    if ($('.smart-scroll').length > 0) {
+        var last_scroll_top = 0;
+        $(window).on('scroll', function() {
+            scroll_top = $(this).scrollTop();
+            if (scroll_top < last_scroll_top) {
+                $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
+            } else {
+                $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
+            }
+            last_scroll_top = scroll_top;
+        });
+    }
     </script>
     <?php 
   mysqli_close($link);

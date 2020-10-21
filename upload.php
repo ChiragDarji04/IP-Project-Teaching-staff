@@ -261,8 +261,3 @@ if(isset($_POST['membership-submit']))
     }
     header("location: form.php");
 }
-
-
-
-?>
-

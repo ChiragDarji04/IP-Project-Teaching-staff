@@ -361,9 +361,23 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <td><?php echo $row["Institute"]; ?></td>
                                 <td><?php echo $row["Designation"]; ?></td>
                                 <td><?php echo $row["Period"]; ?></td>
-                                <td><a <?php if ($row["View"] == '') {
-                                            echo "style='display:none'";
-                                        } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+
+                                <?php
+                                if ($_SESSION["loggedin"] == true) {
+                                ?>
+
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                } else {
+                                ?>
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                }
+                                ?>
                             </tr>
                         <?php
                         }
@@ -519,9 +533,23 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <td><?php echo $row["Conference"]; ?></td>
                                 <td><?php echo $row["Place"]; ?></td>
                                 <td><?php echo $row["Year"]; ?></td>
-                                <td><a <?php if ($row["View"] == '') {
-                                            echo "style='display:none'";
-                                        } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                if ($_SESSION["loggedin"] == true) {
+                                ?>
+
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                } else {
+                                ?>
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                }
+                                ?>
+
                                 <?php
                                 echo "
                             <td " . $style . "><a class='btn btn-outline-success' href='conference.php?title=$row[Title]&conference=$row[Conference]&place=$row[Place]&year=$row[Year]&view=$row[View]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
@@ -585,9 +613,22 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <td><?php echo $row["Page"]; ?></td>
                                 <td><?php echo $row["Factor"]; ?></td>
                                 <td><?php echo $row["Year"]; ?></td>
-                                <td><a <?php if ($row["View"] == '') {
-                                            echo "style='display:none'";
-                                        } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info "><i class="far fa-eye"></i></a></td>
+                                <?php
+                                if ($_SESSION["loggedin"] == true) {
+                                ?>
+
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                } else {
+                                ?>
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                }
+                                ?>
                                 <?php
                                 echo "
                             <td " . $style . "><a class='btn btn-outline-success' href='journal.php?title=$row[Title]&journal=$row[Journal]&page=$row[Page]&year=$row[Year]&view=$row[View]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
@@ -648,9 +689,22 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <td><?php echo $srno; ?></td>
                                 <td><?php echo $row["Interaction"]; ?></td>
                                 <td><?php echo $row["Year"]; ?></td>
-                                <td><a <?php if ($row["View"] == '') {
-                                            echo "style='display:none'";
-                                        } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info "><i class="far fa-eye"></i></a></td>
+                                <?php
+                                if ($_SESSION["loggedin"] == true) {
+                                ?>
+
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                } else {
+                                ?>
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                }
+                                ?>
                                 <?php
                                 echo "
                             <td " . $style . "><a class='btn btn-outline-success ' href='interaction.php?interaction=$row[Interaction]&year=$row[Year]&view=$row[View]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
@@ -720,9 +774,22 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <td><?php echo $row["Program"]; ?></td>
                                 <td><?php echo $row["Agency"]; ?></td>
                                 <td><?php echo $row["Duration"]; ?></td>
-                                <td><a <?php if ($row["View"] == '') {
-                                            echo "style='display:none'";
-                                        } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info "><i class="far fa-eye"></i></a></td>
+                                <?php
+                                if ($_SESSION["loggedin"] == true) {
+                                ?>
+
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                } else {
+                                ?>
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                }
+                                ?>
                                 <?php
                                 echo "
                             <td " . $style . "><a class='btn btn-outline-success ' href='training.php?training=$row[Training]&title=$row[Title]&program=$row[Program]&agency=$row[Agency]&duration=$row[Duration]&rollno=$row[Sr]&view=$row[View]'><i class='fas fa-edit'></i></a></td>
@@ -792,9 +859,22 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <td><?php echo $row["Program"]; ?></td>
                                 <td><?php echo $row["Agency"]; ?></td>
                                 <td><?php echo $row["Duration"]; ?></td>
-                                <td><a <?php if ($row["View"] == '') {
-                                            echo "style='display:none'";
-                                        } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info "><i class="far fa-eye"></i></a></td>
+                                <?php
+                                if ($_SESSION["loggedin"] == true) {
+                                ?>
+
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                } else {
+                                ?>
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                }
+                                ?>
                                 <?php
                                 echo "
                             <td " . $style . "><a class='btn btn-outline-success ' href='activity.php?training=$row[Training]&title=$row[Title]&program=$row[Program]&agency=$row[Agency]&duration=$row[Duration]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
@@ -857,9 +937,22 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <td><?php echo $row["Name"]; ?></td>
                                 <td><?php echo $row["Duration"]; ?></td>
                                 <td><?php echo $row["Session"]; ?></td>
-                                <td><a <?php if ($row["View"] == '') {
-                                            echo "style='display:none'";
-                                        } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info "><i class="far fa-eye"></i></a></td>
+                                <?php
+                                if ($_SESSION["loggedin"] == true) {
+                                ?>
+
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                } else {
+                                ?>
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                }
+                                ?>
                                 <?php
                                 echo "
                             <td " . $style . "><a class='btn btn-outline-success ' href='nptel.php?name=$row[Name]&duration=$row[Duration]&session=$row[Session]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
@@ -921,9 +1014,22 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <td><?php echo $srno; ?></td>
                                 <td><?php echo $row["Program"]; ?></td>
                                 <td><?php echo $row["Year"]; ?></td>
-                                <td><a <?php if ($row["View"] == '') {
-                                            echo "style='display:none'";
-                                        } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info "><i class="far fa-eye"></i></a></td>
+                                <?php
+                                if ($_SESSION["loggedin"] == true) {
+                                ?>
+
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                } else {
+                                ?>
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                }
+                                ?>
                                 <?php
                                 echo "
                             <td " . $style . "><a class='btn btn-outline-success ' href='fdps.php?program=$row[Program]&year=$row[Year]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
@@ -983,9 +1089,22 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <tr>
                                 <td><?php echo $srno; ?></td>
                                 <td><?php echo $row["Membership"]; ?></td>
-                                <td><a <?php if ($row["View"] == '') {
-                                            echo "style='display:none'";
-                                        } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info "><i class="far fa-eye"></i></a></td>
+                                <?php
+                                if ($_SESSION["loggedin"] == true) {
+                                ?>
+
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                } else {
+                                ?>
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                }
+                                ?>
                                 <?php
                                 echo "
                             <td " . $style . "><a class='btn btn-outline-success' href='membership.php?membership=$row[Membership]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
@@ -1212,13 +1331,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         $sql = "DELETE FROM journal WHERE Sr = '{$_REQUEST['title']}'";
         if (mysqli_query($link, $sql)) {
             echo  "<script>
-      swal({
-        title: 'Successfully Deleted',
-        text: 'Record Deleted!!',
-        icon: 'success',
-        button: 'Ok!',
-      });
-      </script>";
+                swal({
+                    title: 'Successfully Deleted',
+                    text: 'Record Deleted!!',
+                    icon: 'success',
+                    button: 'Ok!',
+                });
+            </script>";
         } else {
             echo "Something went wrong";
         }
@@ -1232,13 +1351,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             $document =  $_REQUEST['interactiondocument'];
             unlink($document);
             echo  "<script>
-        swal({
-          title: 'Successfully Deleted',
-          text: 'Record Deleted!!',
-          icon: 'success',
-          button: 'Ok!',
-        });
-        </script>";
+                swal({
+                    title: 'Successfully Deleted',
+                    text: 'Record Deleted!!',
+                    icon: 'success',
+                    button: 'Ok!',
+                });
+            </script>";
         } else {
             echo "Something went wrong";
         }
@@ -1252,12 +1371,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             $document =  $_REQUEST['document'];
             unlink($trainingdocument);
             echo  "<script>
-            swal({
-              title: 'Successfully Deleted',
-              text: 'Record Deleted!!',
-              icon: 'success',
-              button: 'Ok!',
-            });
+                swal({
+                    title: 'Successfully Deleted',
+                    text: 'Record Deleted!!',
+                    icon: 'success',
+                    button: 'Ok!',
+                });
             </script>";
             header("location:index.php,refresh:2");
         } else {
@@ -1272,13 +1391,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             $document =  $_REQUEST['activitydocument'];
             unlink($document);
             echo  "<script>
-        swal({
-          title: 'Successfully Deleted',
-          text: 'Record Deleted!!',
-          icon: 'success',
-          button: 'Ok!',
-        });
-        </script>";
+                swal({
+                    title: 'Successfully Deleted',
+                    text: 'Record Deleted!!',
+                    icon: 'success',
+                    button: 'Ok!',
+                });
+            </script>";
         } else {
             echo "Something went wrong";
         }
@@ -1294,13 +1413,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             $document =  $_REQUEST['npteldocument'];
             unlink($document);
             echo  "<script>
-        swal({
-          title: 'Successfully Deleted',
-          text: 'Record Deleted!!',
-          icon: 'success',
-          button: 'Ok!',
-        });
-        </script>";
+                swal({
+                    title: 'Successfully Deleted',
+                    text: 'Record Deleted!!',
+                    icon: 'success',
+                    button: 'Ok!',
+                });
+            </script>";
         } else {
             echo "Something went wrong";
         }
@@ -1314,13 +1433,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             $document =  $_REQUEST['fdpsdocument'];
             unlink($document);
             echo  "<script>
-        swal({
-          title: 'Successfully Deleted',
-          text: 'Record Deleted!!',
-          icon: 'success',
-          button: 'Ok!',
-        });
-        </script>";
+                swal({
+                    title: 'Successfully Deleted',
+                    text: 'Record Deleted!!',
+                    icon: 'success',
+                    button: 'Ok!',
+                });
+            </script>";
         } else {
             echo "Something went wrong";
         }
@@ -1334,14 +1453,14 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             $document =  $_REQUEST['membershipdocument'];
             unlink($document);
             echo  "<script>
-        swal({
-          title: 'Successfully Deleted',
-          text: 'Record Deleted!!',
-          icon: 'success',
-          button: 'Ok!',
-        });
-        
-        </script>";
+                swal({
+                    title: 'Successfully Deleted',
+                    text: 'Record Deleted!!',
+                    icon: 'success',
+                    button: 'Ok!',
+                });
+
+            </script>";
             header("Refresh: 1");
         } else {
             echo "Something went wrong";

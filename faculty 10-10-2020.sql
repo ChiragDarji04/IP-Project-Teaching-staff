@@ -382,7 +382,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `created_at`) VALUES
-(1, 'yogesh', 'YogeshPingle@9876', '2020-09-20 12:09:33');
+(1, '', '', '2020-09-20 12:09:33');
 
 -- --------------------------------------------------------
 

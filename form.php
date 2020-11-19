@@ -1,13 +1,13 @@
-<?php 
-include "config.php" ;
+<?php
+include "config.php";
 error_reporting(0);
 session_start();
- 
 
-$current_user = $_SESSION['username'] ;
+
+$current_user = $_SESSION['username'];
 
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
 }
@@ -23,47 +23,51 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
+    <title>Add Data</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="sweetalert.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
 
     <style>
-    body {
-        margin: 0px;
-        padding: 0px;
-        background-color: #2b7a78 !important;
-    }
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: #2b7a78 !important;
+        }
 
-    .hide {
-        display: none;
-    }
+        .hide {
+            display: none;
+        }
     </style>
 </head>
 
 <body>
     <nav id="navbar" class="navbar smart-scroll navbar-expand-lg navbar-info">
-        <a class="navbar-brand mr-auto" href="#"><img src="images/logo12.png" height="60px" width="60px"></a>
+        <a class="navbar-brand mr-auto" href="index.php"><img src="images/logo12.png" height="60px" width="60px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="fas fa-caret-down fa-lg"></i></span>
+        </button>
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php"><i class="fa fa-home"></i> Home <span
-                            class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.php"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
+
+
+            <div class="nav-item">
+                <div>
+                    <h5 style="text-transform:uppercase;" class="">WELCOME <?php echo $current_user;  ?>!!!</h5>
+                </div>
+                <div>
+                    <a href="logout.php" class="btn btn-danger btn-block btn-sm">Logout</a>
+                </div>
+            </div>
         </div>
 
-        <div>
-            <div class="">
-                <h5 style="text-transform:uppercase;" class="">WELCOME <?php echo $current_user;  ?>!!!</h5>
-            </div>
-            <div>
-                <a href="logout.php" class="btn btn-danger btn-block btn-sm">Logout</a>
-            </div>
-        </div>
+
     </nav>
 
 
@@ -79,6 +83,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                     <button class="button-item" type="button" id="nptelclick">NPTEL</button>
                     <button class="button-item" type="button" id="fdpsclick">FDPS ORGANIZED</button>
                     <button class="button-item" type="button" id="membershipclick">PROFESSIONAL MEMBERSHIP</button>
+                    <button class="button-item" type="button" id="subjectclick">COURSE TAUGHT</button>
                 </div>
 
             </div>
@@ -86,25 +91,22 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                 <!-- <h4  class="teaching" style ="text-align : center; color:#def2f1;">TEACHING STAFF INFORMATION</h4> -->
 
                 <div id="" class="conference-form container ">
-                  
+
                     <form id="form1" method="POST" action="upload.php">
                         <br>
                         <h3>PUBLICATION IN CONFERENCE</h3>
                         <hr>
                         <div class="form-group">
                             <label for="conferencetitle">Title / Topic</label>
-                            <input type="text" name="conference-Title" class="form-control" id="conferencetitle"
-                                aria-describedby="emailHelp" placeholder="Enter Title">
+                            <input type="text" name="conference-Title" class="form-control" id="conferencetitle" aria-describedby="emailHelp" placeholder="Enter Title">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputconference">NAME OF THE CONFERENCE</label>
-                            <input type="Text" name="Conference" class="form-control" id="exampleInputconference"
-                                placeholder="Enter Name of the Conference">
+                            <input type="Text" name="Conference" class="form-control" id="exampleInputconference" placeholder="Enter Name of the Conference">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPaper">VOL NO , PAGE NO</label>
-                            <input type="Text" name="conference-Paper" class="form-control" id="exampleInputPaper"
-                                placeholder="Enter Page No">
+                            <input type="Text" name="conference-Paper" class="form-control" id="exampleInputPaper" placeholder="Enter Page No">
                         </div>
                         <div class="form-group">
                             <label for="conferenceyear">YEAR OF PUBLICATION</label>
@@ -118,40 +120,35 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         </div>
                         <div class="form-group">
                             <label for="exampleInputdoc">UPLOAD CONFERENCE LINK</label>
-                            <input name="conference-upload" type="text" class="form-control" id="exampleInputdoc"
-                                placeholder="Enter Conference Link" required><br>
+                            <input name="conference-upload" type="text" class="form-control" id="exampleInputdoc" placeholder="Enter Conference Link" required><br>
                             <button type="submit" name="conference-submit" class="btn btn-primary">Submit</button>
-                         
+
                         </div>
                     </form>
                 </div>
 
 
                 <div id="" class="journal-form container ">
-                   
+
                     <form id="form2" method="POST" action="upload.php" enctype="multipart/form-data">
                         <br>
                         <h3>PUBLICATION IN JOURNALS</h3>
                         <hr>
                         <div class="form-group">
                             <label for="formGroupjournalInput">TITLE</label>
-                            <input type="text" name="journal-title" class="form-control" id="formGroupjournalInput"
-                                placeholder="Enter Journal Title">
+                            <input type="text" name="journal-title" class="form-control" id="formGroupjournalInput" placeholder="Enter Journal Title">
                         </div>
                         <div class="form-group">
                             <label for="formGroupjournalInput2">NAME OF THE JOURNAL</label>
-                            <input type="text" name="journal" class="form-control" id="formGroupjournalInput2"
-                                placeholder="Enter Name Of The Journal">
+                            <input type="text" name="journal" class="form-control" id="formGroupjournalInput2" placeholder="Enter Name Of The Journal">
                         </div>
                         <div class="form-group">
                             <label for="formGroupjournalInput3">PAGES</label>
-                            <input type="text" name="journal-pages" class="form-control" id="formGroupjournalInput3"
-                                placeholder="Vol , Page No">
+                            <input type="text" name="journal-pages" class="form-control" id="formGroupjournalInput3" placeholder="Vol , Page No">
                         </div>
                         <div class="form-group">
                             <label for="formGroupjournalInput4">Journal with Impact FACTOR</label>
-                            <input type="text" name="journal-factor" class="form-control" id="formGroupjournalInput4"
-                                placeholder="Journal With Impact FACTOR">
+                            <input type="text" name="journal-factor" class="form-control" id="formGroupjournalInput4" placeholder="Journal With Impact FACTOR">
                         </div>
                         <div class="form-group">
                             <label for="journalyear">SELECT YEAR</label>
@@ -165,10 +162,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         </div>
                         <div class="form-group">
                             <label for="formGroupjournalInput6">ENTER JOURNAL LINK</label><br>
-                            <input name="journal-upload" type="text" class="form-control" id="formGroupjournalInput6"
-                                placeholder="Enter Journal Link" required> <br>
+                            <input name="journal-upload" type="text" class="form-control" id="formGroupjournalInput6" placeholder="Enter Journal Link" required> <br>
                             <button type="submit" name="journal-submit" class="btn btn-primary">Submit</button>
-                            
+
                         </div>
 
                     </form>
@@ -176,15 +172,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 
                 <div id="" class="interaction-form container ">
-                   
+
                     <form id="form3" method="POST" action="upload.php" enctype="multipart/form-data">
                         <br>
                         <h3>INTERACTION WITH OUTSIDE WORLD</h3>
                         <hr>
                         <div class="form-group">
                             <label for="formGroupinteractionInput">NATURE OF INTERACTION</label>
-                            <input type="text" name="interaction" class="form-control" id="formGroupinteractionInput"
-                                placeholder="Resource Person/Judge">
+                            <input type="text" name="interaction" class="form-control" id="formGroupinteractionInput" placeholder="Resource Person/Judge">
                         </div>
                         <div class="form-group">
                             <label for="interactionyear">SELECT YEAR</label>
@@ -198,10 +193,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         </div>
                         <div class="form-group">
                             <label for="formGroupinteractionInput3">UPLOAD DOCUMENT</label>
-                            <input type="file" name="interaction-upload" accept=".pdf" id="formGroupinteractionInput3"
-                                required><br><br>
+                            <input type="file" name="interaction-upload" accept=".pdf" id="formGroupinteractionInput3" required><br><br>
                             <button type="submit" name="interaction-submit" class="btn btn-primary">Submit</button>
-                            
+
 
                         </div>
                     </form>
@@ -209,30 +203,26 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 
                 <div id="" class="training-form container ">
-                   
+
                     <form id="form5" method="POST" action="upload.php" enctype="multipart/form-data">
                         <br>
                         <h3>CORPORATE TRAINING</h3>
                         <hr>
                         <div class="form-group">
                             <label for="formGrouptrainingInput">TRAINING</label>
-                            <input type="text" name="training" class="form-control" id="formGrouptrainingInput"
-                                placeholder="Enter Training">
+                            <input type="text" name="training" class="form-control" id="formGrouptrainingInput" placeholder="Enter Training">
                         </div>
                         <div class="form-group">
                             <label for="formGrouptrainingInput2">TITLE</label>
-                            <input type="text" name="training-title" class="form-control" id="formGrouptrainingInput2"
-                                placeholder="Enter Training Title">
+                            <input type="text" name="training-title" class="form-control" id="formGrouptrainingInput2" placeholder="Enter Training Title">
                         </div>
                         <div class="form-group">
                             <label for="formGrouptrainingInput3">NAME OF THE PROGRAM</label>
-                            <input type="text" name="training-program" class="form-control" id="formGrouptrainingInput3"
-                                placeholder="Enter Training Program">
+                            <input type="text" name="training-program" class="form-control" id="formGrouptrainingInput3" placeholder="Enter Training Program">
                         </div>
                         <div class="form-group">
                             <label for="formGrouptrainingInput4">ORGANIZING AGENCY</label>
-                            <input type="text" name="training-agency" class="form-control" id="formGrouptrainingInput4"
-                                placeholder="Enter Organizing Agency">
+                            <input type="text" name="training-agency" class="form-control" id="formGrouptrainingInput4" placeholder="Enter Organizing Agency">
                         </div>
                         <div class="form-group">
                             <label for="trainingyear">SELECT YEAR</label>
@@ -246,10 +236,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         </div>
                         <div class="form-group">
                             <label for="formGrouptrainingInput6">UPLOAD DOCUMENT</label>
-                            <input type="file" name="training-upload" accept=".pdf" id="formGrouptrainingInput6"
-                                required><br><br>
+                            <input type="file" name="training-upload" accept=".pdf" id="formGrouptrainingInput6" required><br><br>
                             <button type="submit" name="training-submit" class="btn btn-primary">Submit</button>
-                          
+
 
                         </div>
                     </form>
@@ -257,7 +246,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 
                 <div id="" class="activity-form container ">
-                   
+
                     <form id="form6" method="POST" action="upload.php" enctype="multipart/form-data">
                         <br>
                         <h3>EXTENDED LEARNING ACTIVITIES</h3>
@@ -273,18 +262,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         </div>
                         <div class="form-group">
                             <label for="activitytitle">TITLE</label>
-                            <input type="text" id="activitytitle" name="activity-title" class="form-control"
-                                placeholder="Enter Title">
+                            <input type="text" id="activitytitle" name="activity-title" class="form-control" placeholder="Enter Title">
                         </div>
                         <div class="form-group">
                             <label for="activityname">NAME OF THE PROGRAM</label>
-                            <input type="text" id="activityname" name="activity-name" class="form-control"
-                                placeholder="Enter Name of Program">
+                            <input type="text" id="activityname" name="activity-name" class="form-control" placeholder="Enter Name of Program">
                         </div>
                         <div class="form-group">
                             <label for="activitylocation">ORGANIZING AGENCY</label>
-                            <input type="text" id="activitylocation" name="activity-location" class="form-control"
-                                placeholder="Enter Organizing Agency">
+                            <input type="text" id="activitylocation" name="activity-location" class="form-control" placeholder="Enter Organizing Agency">
                         </div>
                         <div class="form-group">
                             <label for="activityyear">SELECT YEAR</label>
@@ -298,10 +284,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         </div>
                         <div class="form-group">
                             <label for="activityupload"></label>
-                            <input type="file" name="activity-upload" id="activityupload" value="browse"
-                                required><br><br>
+                            <input type="file" name="activity-upload" id="activityupload" value="browse" required><br><br>
                             <button type="submit" name="activity-submit" class="btn btn-primary">Submit</button>
-                            
+
 
                         </div>
 
@@ -310,7 +295,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 
                 <div id="" class="nptel-form container ">
-                   
+
 
                     <form id="form7" method="POST" action="upload.php" enctype="multipart/form-data">
                         <br>
@@ -318,13 +303,11 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         <hr>
                         <div class="form-group">
                             <label for="nptelname">COURSE NAME</label>
-                            <input type="text" name="nptel-name" id="nptelname" class="form-control"
-                                placeholder="Enter Course Name">
+                            <input type="text" name="nptel-name" id="nptelname" class="form-control" placeholder="Enter Course Name">
                         </div>
                         <div class="form-group">
                             <label for="nptelduration">DURATION</label>
-                            <input type="text" name="nptel-duration" id="nptelduration" class="form-control"
-                                placeholder="Enter Duration">
+                            <input type="text" name="course_cd" id="nptelduration" class="form-control" placeholder="Enter Duration">
                         </div>
                         <div class="form-group">
                             <label for="nptelyear">SELECT YEAR</label>
@@ -340,7 +323,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                             <label for="nptelupload"></label>
                             <input type="file" name="nptel-upload" id="nptelupload" value="browse" required><br><br>
                             <button type="submit" name="nptel-submit" class="btn btn-primary">Submit</button>
-                            
+
 
                         </div>
                     </form>
@@ -348,7 +331,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 
                 <div id="" class="fdps-form container ">
-                   
+
 
                     <form id="form8" method="POST" action="upload.php" enctype="multipart/form-data">
                         <br>
@@ -356,8 +339,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         <hr>
                         <div class="form-group">
                             <label for="fdpsname">PROGRAM NAME</label>
-                            <input type="text" name="fdps-name" id="fdpsname" class="form-control"
-                                placeholder="Enter Program Name">
+                            <input type="text" name="fdps-name" id="fdpsname" class="form-control" placeholder="Enter Program Name">
                         </div>
                         <div class="form-group">
                             <label for="fdpsyear">SELECT YEAR</label>
@@ -373,14 +355,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                             <label for="fdpsupload"></label>
                             <input type="file" name="fdps-upload" id="fdpsupload" value="browse" required><br><br>
                             <button type="submit" name="fdps-submit" class="btn btn-primary">Submit</button>
-                           
+
 
                         </div>
                     </form>
                 </div>
 
                 <div id="" class="membership-form container ">
-                  
+
 
                     <form id="form9" method="POST" action="upload.php" enctype="multipart/form-data">
                         <br>
@@ -388,15 +370,67 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
                         <hr>
                         <div class="form-group">
                             <label for="membershipname">MEMBERSHIP NAME</label>
-                            <input type="text" placeholder="CSI/IEEE/ISTE.." name="membership-name" id="membershipname"
-                                class="form-control">
+                            <input type="text" placeholder="CSI/IEEE/ISTE.." name="membership-name" id="membershipname" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="membershipupload"></label>
-                            <input type="file" name="membership-upload" id="membershipupload" value="browse"
-                                required><br><br>
+                            <input type="file" name="membership-upload" id="membershipupload" value="browse" required><br><br>
                             <button type="submit" name="membership-submit" class="btn btn-primary">Submit</button>
-                            
+
+                        </div>
+                    </form>
+                </div>
+
+                <div id="" class="subject-form container ">
+
+
+                    <form id="form10" method="POST" action="upload.php" enctype="multipart/form-data">
+                        <br>
+                        <h3>COURSES TAUGHT </h3>
+                        <hr>
+                        <div class="form-group">
+                            <label for="sub">COURSE NAME</label>
+                            <input type="text" name="sub" id="subjectname" class="form-control" placeholder="Enter Course Name">
+                        </div>
+                        <div class="form-group">
+                            <label for="course_cd">COURSE CODE</label>
+                            <input type="text" name="course_cd" id="course_cd" class="form-control" placeholder="Enter Course Code">
+                        </div>
+                        <div class="form-group">
+                            <label for="sem">SEMESTER OF THE COURSE</label>
+                            <select class="form-control" value='' name="sem" id="sem">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="year">SELECT YEAR</label>
+                            <select class="form-control" value='' name="year" id="year">
+                                <option></option>
+                                <option>2013-2014</option>
+                                <option>2014-2015</option>
+                                <option>2015-2016</option>
+                                <option>2016-2017</option>
+                                <option>2017-2018</option>
+                                <option>2018-2019</option>
+                                <option>2019-2020</option>
+                                <option>2020-2021</option>
+                                <option>2021-2022</option>
+                                <option>2022-2023</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <br><br>
+                            <button type="submit" name="subject-submit" class="btn btn-primary">Submit</button>
+
+
                         </div>
                     </form>
                 </div>
@@ -430,167 +464,190 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 
 
-    <script src="main.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    <script src="js/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
 
     <script>
-    $('body').css('padding-top', $('.navbar').outerHeight() + 'px')
+        $('body').css('padding-top', $('.navbar').outerHeight() + 'px')
 
-    if ($('.smart-scroll').length > 0) {
-        var last_scroll_top = 0;
-        $(window).on('scroll', function() {
-            scroll_top = $(this).scrollTop();
-            if (scroll_top < last_scroll_top) {
-                $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
-            } else {
-                $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
-            }
-            last_scroll_top = scroll_top;
-        });
-    }
+        if ($('.smart-scroll').length > 0) {
+            var last_scroll_top = 0;
+            $(window).on('scroll', function() {
+                scroll_top = $(this).scrollTop();
+                if (scroll_top < last_scroll_top) {
+                    $('.smart-scroll').removeClass('scrolled-down').addClass('scrolled-up');
+                } else {
+                    $('.smart-scroll').removeClass('scrolled-up').addClass('scrolled-down');
+                }
+                last_scroll_top = scroll_top;
+            });
+        }
     </script>
     <script>
-    $(document).ready(function() {
-        $("#conferenceclick").click(function() {
-            $(".conference-form").toggle();
-            $(".journal-form").hide();
-            $(".interaction-form").hide();
-            $(".training-form").hide();
-            $(".activity-form").hide();
-            $(".nptel-form").hide();
-            $(".fdps-form").hide();
-            $(".membership-form").hide();
-        });
-    });
+        $(document).ready(function() {
+            $("#conferenceclick").click(function() {
+                $(".conference-form").toggle();
+                $(".subject-form").hide();
+                $(".journal-form").hide();
+                $(".interaction-form").hide();
+                $(".training-form").hide();
+                $(".activity-form").hide();
+                $(".nptel-form").hide();
+                $(".fdps-form").hide();
+                $(".membership-form").hide();
 
-    $(document).ready(function() {
-        $("#journalclick").click(function() {
-            $(".journal-form").toggle();
-            $(".conference-form").hide();
-            $(".interaction-form").hide();
-            $(".training-form").hide();
-            $(".activity-form").hide();
-            $(".nptel-form").hide();
-            $(".fdps-form").hide();
-            $(".membership-form").hide();
-        });
-    });
-
-    $(document).ready(function() {
-        $("#interactionclick").click(function() {
-            $(".interaction-form").toggle();
-            $(".conference-form").hide();
-            $(".journal-form").hide();
-            $(".training-form").hide();
-            $(".activity-form").hide();
-            $(".nptel-form").hide();
-            $(".fdps-form").hide();
-            $(".membership-form").hide();
-        });
-    });
-
-
-
-    $(document).ready(function() {
-        $("#trainingclick").click(function() {
-            $(".training-form").toggle();
-            $(".conference-form").hide();
-            $(".interaction-form").hide();
-            $(".journal-form").hide();
-            $(".activity-form").hide();
-            $(".nptel-form").hide();
-            $(".fdps-form").hide();
-            $(".membership-form").hide();
-        });
-    });
-
-    $(document).ready(function() {
-        $("#activityclick").click(function() {
-            $(".activity-form").toggle();
-            $(".conference-form").hide();
-            $(".interaction-form").hide();
-            $(".training-form").hide();
-            $(".journal-form").hide();
-            $(".nptel-form").hide();
-            $(".fdps-form").hide();
-            $(".membership-form").hide();
-        });
-    });
-
-    $(document).ready(function() {
-        $("#nptelclick").click(function() {
-            $(".nptel-form").toggle();
-            $(".conference-form").hide();
-            $(".interaction-form").hide();
-            $(".training-form").hide();
-            $(".activity-form").hide();
-            $(".journal-form").hide();
-            $(".fdps-form").hide();
-            $(".membership-form").hide();
-        });
-    });
-
-    $(document).ready(function() {
-        $("#fdpsclick").click(function() {
-            $(".fdps-form").toggle();
-            $(".conference-form").hide();
-            $(".interaction-form").hide();
-            $(".training-form").hide();
-            $(".activity-form").hide();
-            $(".nptel-form").hide();
-            $(".journal-form").hide();
-            $(".membership-form").hide();
-        });
-    });
-
-    $(document).ready(function() {
-        $("#membershipclick").click(function() {
-            $(".membership-form").toggle();
-            $(".conference-form").hide();
-            $(".interaction-form").hide();
-            $(".training-form").hide();
-            $(".activity-form").hide();
-            $(".nptel-form").hide();
-            $(".fdps-form").hide();
-            $(".journal-form").hide();
-        });
-    });
-
-    $(document).ready(function() {
-        $("#conference-modify").click(function() {
-            $("#conference-hidden").toggle()
-        });
-        $("#journal-modify").click(function() {
-            $("#journal-hidden").toggle()
-        });
-        $("#interaction-modify").click(function() {
-            $("#interaction-hidden").toggle()
-        });
-        $("#training-modify").click(function() {
-            $("#training-hidden").toggle()
-        });
-        $("#activity-modify").click(function() {
-            $("#activity-hidden").toggle()
-        });
-        $("#nptel-modify").click(function() {
-            $("#nptel-hidden").toggle()
-        });
-        $("#fdps-modify").click(function() {
-            $("#fdps-hidden").toggle()
-        });
-        $("#membership-modify").click(function() {
-            $("#membership-hidden").toggle()
+            });
         });
 
-    });
+        $(document).ready(function() {
+            $("#journalclick").click(function() {
+                $(".journal-form").toggle();
+                $(".subject-form").hide();
+                $(".conference-form").hide();
+                $(".interaction-form").hide();
+                $(".training-form").hide();
+                $(".activity-form").hide();
+                $(".nptel-form").hide();
+                $(".fdps-form").hide();
+                $(".membership-form").hide();
+            });
+        });
+
+        $(document).ready(function() {
+            $("#interactionclick").click(function() {
+                $(".interaction-form").toggle();
+                $(".conference-form").hide();
+                $(".subject-form").hide();
+                $(".journal-form").hide();
+                $(".training-form").hide();
+                $(".activity-form").hide();
+                $(".nptel-form").hide();
+                $(".fdps-form").hide();
+                $(".membership-form").hide();
+            });
+        });
+
+
+
+        $(document).ready(function() {
+            $("#trainingclick").click(function() {
+                $(".training-form").toggle();
+                $(".conference-form").hide();
+                $(".interaction-form").hide();
+                $(".subject-form").hide();
+                $(".journal-form").hide();
+                $(".activity-form").hide();
+                $(".nptel-form").hide();
+                $(".fdps-form").hide();
+                $(".membership-form").hide();
+            });
+        });
+
+        $(document).ready(function() {
+            $("#activityclick").click(function() {
+                $(".activity-form").toggle();
+                $(".conference-form").hide();
+                $(".interaction-form").hide();
+                $(".training-form").hide();
+                $(".subject-form").hide();
+                $(".journal-form").hide();
+                $(".nptel-form").hide();
+                $(".fdps-form").hide();
+                $(".membership-form").hide();
+            });
+        });
+
+        $(document).ready(function() {
+            $("#nptelclick").click(function() {
+                $(".nptel-form").toggle();
+                $(".conference-form").hide();
+                $(".interaction-form").hide();
+                $(".training-form").hide();
+                $(".activity-form").hide();
+                $(".subject-form").hide();
+                $(".journal-form").hide();
+                $(".fdps-form").hide();
+                $(".membership-form").hide();
+            });
+        });
+
+        $(document).ready(function() {
+            $("#fdpsclick").click(function() {
+                $(".fdps-form").toggle();
+                $(".conference-form").hide();
+                $(".interaction-form").hide();
+                $(".training-form").hide();
+                $(".activity-form").hide();
+                $(".nptel-form").hide();
+                $(".subject-form").hide();
+                $(".journal-form").hide();
+                $(".membership-form").hide();
+            });
+        });
+
+        $(document).ready(function() {
+            $("#membershipclick").click(function() {
+                $(".membership-form").toggle();
+                $(".conference-form").hide();
+                $(".interaction-form").hide();
+                $(".training-form").hide();
+                $(".activity-form").hide();
+                $(".nptel-form").hide();
+                $(".fdps-form").hide();
+                $(".subject-form").hide();
+                $(".journal-form").hide();
+            })
+        });
+
+        $(document).ready(function() {
+            $("#subjectclick").click(function() {
+                $(".subject-form").toggle();
+                $(".journal-form").hide();
+                $(".conference-form").hide();
+                $(".interaction-form").hide();
+                $(".training-form").hide();
+                $(".activity-form").hide();
+                $(".nptel-form").hide();
+                $(".fdps-form").hide();
+                $(".membership-form").hide();
+            });
+        });
+
+        $(document).ready(function() {
+            $("#conference-modify").click(function() {
+                $("#conference-hidden").toggle()
+            });
+            $("#journal-modify").click(function() {
+                $("#journal-hidden").toggle()
+            });
+            $("#interaction-modify").click(function() {
+                $("#interaction-hidden").toggle()
+            });
+            $("#training-modify").click(function() {
+                $("#training-hidden").toggle()
+            });
+            $("#activity-modify").click(function() {
+                $("#activity-hidden").toggle()
+            });
+            $("#nptel-modify").click(function() {
+                $("#nptel-hidden").toggle()
+            });
+            $("#fdps-modify").click(function() {
+                $("#fdps-hidden").toggle()
+            });
+            $("#membership-modify").click(function() {
+                $("#membership-hidden").toggle()
+            });
+            $("#subject-modify").click(function() {
+                $("#subject-hidden").toggle()
+            });
+
+        });
     </script>
 
 

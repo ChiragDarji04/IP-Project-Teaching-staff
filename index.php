@@ -11,18 +11,18 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 <html>
 
 <head>
-    <title>yogesh-pingle</title>
+    <title>Yogesh Pingle</title>
     <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="manifest" href="js/site.webmanifest">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="sweetalert.min.js"></script>
+    <script src="js/sweetalert.min.js"></script>
 
 
     <style>
@@ -34,13 +34,17 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 <body>
 
+<br>
+<br>
+<br>
+<br>
 
 
 
     <!-- ------------------------------------navbar------------------------------- -->
 
     <nav id="navbar" class="navbar smart-scroll navbar-expand-lg navbar-info">
-        <a class="navbar-brand mr-auto" href="#"><img src="images/logo12.png" height="55px" width="55px"></a>
+        <a class="navbar-brand mr-auto" href="index.php"><img src="images/logo12.png" height="55px" width="55px"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
             <span><i class="fas fa-caret-down fa-lg"></i></span>
         </button>
@@ -100,6 +104,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <a class="dropdown-item" target="_blank" href="https://orcid.org/0000-0003-2124-885X">Orcid</a>
 
                         <a <?php echo $style; ?> class="dropdown-item" href="form.php">Add Data</a>
+                        <a <?php echo $style; ?> class="dropdown-item" href="copo/form.php">Course Mapping</a>
 
                         <div class="dropdown-item">
                             <input type="checkbox" class="container" id="checkbox">
@@ -122,8 +127,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <h5 style="text-transform:uppercase;" class="">WELCOME <?php echo $_SESSION['username'];  ?>!!!
                         </h5>
                     </div>
-                    <div class="btn btn-danger btn-block btn-sm">
-                        <a style="color:black;" href="logout.php">LOGOUT</a>
+                    <div>
+                        <a class="btn btn-danger btn-block btn-sm" href="logout.php">LOGOUT</a>
                     </div>
 
                 </div>
@@ -313,10 +318,24 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 <td><?php echo $row["Year"]; ?></td>
                                 <td><?php echo $row["Percentage"]; ?>%</td>
                                 <td><?php echo $row["Projects"]; ?></td>
-                                <td><a <?php if ($row["View"] == '') {
-                                            echo "style='display:none'";
-                                        } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                               
+                                <?php
+                                if ($_SESSION["loggedin"] == true) {
+                                ?>
 
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="<?php echo $row["View"] ?>#toolbar=0" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                } else {
+                                ?>
+                                    <td><a <?php if ($row["View"] == '') {
+                                                echo "style='display:none'";
+                                            } ?> href="" target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+                                <?php
+                                }
+                                ?>
+                            </tr>
                             </tr>
                         <?php
                         }
@@ -394,7 +413,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <div class="container">
         <div class="row ">
 
-            <div class="col-12 col-sm-4" id="accordion">
+            <div class="col-12 col-sm-6" id="accordion">
                 <div class="card">
                     <div id="books" class="card-header" id="headingOne">
                         <h5 class="mb-0">
@@ -430,16 +449,16 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 </div>
             </div>
 
-            <div id="achievements" class="col-12 col-sm-4" id="accordion">
+            <div id="achievements" class="col-12 col-sm-6" id="accordion">
                 <div class="card">
                     <div id="books" class="card-header" id="headingOne">
                         <h5 class="mb-0">
-                            <button class=" collapse-btn btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button class=" collapse-btn btn btn-link collapsed" data-toggle="collapse" data-target="#collapsetwo" aria-expanded="true" aria-controls="collapseOne">
                                 ACHIEVEMENTS <i class="fas fa-caret-down"></i>
                             </button>
                         </h5>
                     </div>
-                    <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
+                    <div id="collapsetwo" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="card-body">
                             <ol>
                                 <li><a target="_blank" href="docs/harmonium.jpg">Harmonium Visharad of Akhil Bharatiya
@@ -463,33 +482,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 </div>
             </div>
 
-            <div class="col-12 col-sm-4" id="accordion">
-                <div class="card">
-                    <div id="books" class="card-header" id="headingOne">
-                        <h5 class="mb-0">
-                            <button class="collapse-btn btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                COURSES TAUGHT<i class="fas fa-caret-down"></i>
-                            </button>
-                        </h5>
-                    </div>
-                    <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordion">
-                        <div class="card-body">
-                            <ol>
-                                <li> Internet Programming</li>
-                                <li>Internet of Everything</li>
-                                <li>Skill Lab (C++ and Java Programming) for EXTC</li>
-                                <li>Advanced Internet Technology</li>
-                                <li>Microcontroller and Embedded Programming</li>
-                                <li>IoT Mini Project Lab</li>
-                                <li>Electronic Communication and Electronic Business</li>
-                                <li>Web Programming</li>
-                                <li>German Language (Computer Engg. Dept.)</li>
-                                <li>Computer Simulation and Modeling</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
     <!-- ------------------------------------achievements courses books------------------------ -->
@@ -552,7 +545,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
                                 <?php
                                 echo "
-                            <td " . $style . "><a class='btn btn-outline-success' href='conference.php?title=$row[Title]&conference=$row[Conference]&place=$row[Place]&year=$row[Year]&view=$row[View]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
+                            <td " . $style . "><a class='btn btn-outline-success' href='updateforms/conference.php?title=$row[Title]&conference=$row[Conference]&place=$row[Place]&year=$row[Year]&view=$row[View]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
                             ";
                                 ?>
                                 <?php
@@ -571,6 +564,74 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         </div>
     </div>
     <!-- --------------------------------publication in conferences------------------ -->
+    <hr>
+    <!-----------------------------------courses taught--------------------------------->
+    <div style="padding-top: 10px;" id="copo" class=" heading container ">
+        <div class="row row-content">
+            <div class="col-12 col-sm-12">
+                <h6> <a class="" data-toggle="collapse" href="#collapseExample10" aria-expanded="false" aria-controls="collapseExample2">
+                        COURSES TAUGHT<i class="fas fa-caret-down"></i>
+                    </a> </h6>
+            </div>
+            <?php
+            $sub = "SELECT * FROM subject ORDER BY `year` DESC, `sem` DESC";
+            $subresult = mysqli_query($link, $sub);
+            ?>
+            <div class="collapse table-responsive" id="collapseExample10">
+                <table class="table table-bordered table-striped ">
+                    <thead>
+                        <tr>
+                            <th>Sr No</th>
+                            <th>Course Name</th>
+                            <th>Course Code</th>
+                            <th>Semester</th>
+                            <th>Year</th>
+                            <th>View </th>
+                            <th <?php echo $style; ?>>Edit</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $srno = 0;
+                        while ($row = mysqli_fetch_assoc($subresult)) {
+                            $srno++;
+                        ?>
+                            <tr>
+                                <td><?php echo $srno; ?></td>
+                                <td><?php echo $row["sub"]; ?></td>
+                                <td><?php echo $row["course_cd"]; ?></td>
+                                <td><?php echo $row["sem"]; ?></td>
+                                <td><?php echo $row["year"]; ?></td>
+                                <?php
+                                if ($_SESSION["loggedin"] == true) {
+                                ?>
+                                    <td><a href='copo/rep.php?course_cd=<?php echo "$row[course_cd]" ?>' target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+
+                                <?php
+                                } else {
+                                ?>
+
+                                    <td><a href='' target="_blank" class="btn btn-outline-info"><i class="far fa-eye"></i></a></td>
+
+                                <?php
+                                }
+                                ?>
+                                <?php
+                                echo "
+                            <td " . $style . "><a class='btn btn-outline-success' href='updateforms/subject.php?sub=$row[sub]&course_cd=$row[course_cd]&sem=$row[sem]&year=$row[year]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a>
+                            </td>
+                            ";
+                                ?>
+                            </tr>
+                        <?php
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     <hr>
     <!-- -----------------------------------publication in Journals------------------ -->
 
@@ -631,7 +692,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 ?>
                                 <?php
                                 echo "
-                            <td " . $style . "><a class='btn btn-outline-success' href='journal.php?title=$row[Title]&journal=$row[Journal]&page=$row[Page]&year=$row[Year]&view=$row[View]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
+                            <td " . $style . "><a class='btn btn-outline-success' href='updateforms/journal.php?title=$row[Title]&journal=$row[Journal]&page=$row[Page]&year=$row[Year]&view=$row[View]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
                             ";
                                 ?>
                                 <?php echo '<td ' . $style . '>
@@ -672,7 +733,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     <thead>
                         <tr>
                             <th>Sr No</th>
-                            <th>Nature of Interaction </th>
+                            <th >Nature of Interaction </th>
+                            
                             <th>Year</th>
                             <th>View </th>
                             <th <?php echo $style; ?>>Edit</th>
@@ -688,6 +750,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <tr>
                                 <td><?php echo $srno; ?></td>
                                 <td><?php echo $row["Interaction"]; ?></td>
+                                
                                 <td><?php echo $row["Year"]; ?></td>
                                 <?php
                                 if ($_SESSION["loggedin"] == true) {
@@ -707,7 +770,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 ?>
                                 <?php
                                 echo "
-                            <td " . $style . "><a class='btn btn-outline-success ' href='interaction.php?interaction=$row[Interaction]&year=$row[Year]&view=$row[View]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
+                            <td " . $style . "><a class='btn btn-outline-success ' href='updateforms/interaction.php?interaction=$row[Interaction]&year=$row[Year]&view=$row[View]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
                             ";
                                 ?>
                                 <?php echo '<td ' . $style . '>
@@ -792,7 +855,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 ?>
                                 <?php
                                 echo "
-                            <td " . $style . "><a class='btn btn-outline-success ' href='training.php?training=$row[Training]&title=$row[Title]&program=$row[Program]&agency=$row[Agency]&duration=$row[Duration]&rollno=$row[Sr]&view=$row[View]'><i class='fas fa-edit'></i></a></td>
+                            <td " . $style . "><a class='btn btn-outline-success ' href='updateforms/training.php?training=$row[Training]&title=$row[Title]&program=$row[Program]&agency=$row[Agency]&duration=$row[Duration]&rollno=$row[Sr]&view=$row[View]'><i class='fas fa-edit'></i></a></td>
                             ";
                                 ?>
                                 <?php echo '<td ' . $style . '>
@@ -877,7 +940,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 ?>
                                 <?php
                                 echo "
-                            <td " . $style . "><a class='btn btn-outline-success ' href='activity.php?training=$row[Training]&title=$row[Title]&program=$row[Program]&agency=$row[Agency]&duration=$row[Duration]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
+                            <td " . $style . "><a class='btn btn-outline-success ' href='updateforms/activity.php?training=$row[Training]&title=$row[Title]&program=$row[Program]&agency=$row[Agency]&duration=$row[Duration]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
                             ";
                                 ?>
                                 <?php echo '<td ' . $style . '>
@@ -955,7 +1018,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 ?>
                                 <?php
                                 echo "
-                            <td " . $style . "><a class='btn btn-outline-success ' href='nptel.php?name=$row[Name]&duration=$row[Duration]&session=$row[Session]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
+                            <td " . $style . "><a class='btn btn-outline-success ' href='updateforms/nptel.php?name=$row[Name]&duration=$row[Duration]&session=$row[Session]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
                             ";
                                 ?>
                                 <?php echo '<td ' . $style . '>
@@ -1032,7 +1095,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 ?>
                                 <?php
                                 echo "
-                            <td " . $style . "><a class='btn btn-outline-success ' href='fdps.php?program=$row[Program]&year=$row[Year]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
+                            <td " . $style . "><a class='btn btn-outline-success ' href='updateforms/fdps.php?program=$row[Program]&year=$row[Year]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
                             ";
                                 ?>
                                 <?php echo '<td ' . $style . '>
@@ -1107,7 +1170,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                 ?>
                                 <?php
                                 echo "
-                            <td " . $style . "><a class='btn btn-outline-success' href='membership.php?membership=$row[Membership]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
+                            <td " . $style . "><a class='btn btn-outline-success' href='updateforms/membership.php?membership=$row[Membership]&rollno=$row[Sr]'><i class='fas fa-edit'></i></a></td>
                             ";
                                 ?>
                                 <?php echo '<td ' . $style . '>
@@ -1219,8 +1282,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             Behind Vasai Court, Vasai Road (West),
                             Dist :-Palghar, Maharashtra. Pin:- 401201
                         </li><br>
-                        <li><a href=""><i class="fa fa-phone"></i> 9422492389 / 9665009742</a></li><br>
-                        <li><a href=""><i class="fa fa-envelope"></i><a href=""> yogeshpingle1977@gmail.com </a>/ <a href="">yogesh.pingle@vcet.edu.in</a> </a></li>
+                        <li><a href="tel:9422492389"><i class="fa fa-phone"></i> 9422492389</a></li>
+                        <li><a href="tel:9665009742"><i class="fa fa-phone"></i> 9665009742</a></li><br>
+                        <li><a href=""><i class="fa fa-envelope"></i><a href="mailto:yogeshpingle1977@gmail.com"> yogeshpingle1977@gmail.com </a>/ <a href="mailto:yogesh.pingle@vcet.edu.in">yogesh.pingle@vcet.edu.in</a> </a></li>
                     </ul>
                 </div>
             </div>
@@ -1260,7 +1324,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 
 
-    <script src="main.js"></script>
+    <script src="js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">

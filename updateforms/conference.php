@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+include "../config.php";
 error_reporting(0);
 session_start();
 
@@ -28,12 +28,15 @@ $view = $_GET['view'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
+    <title>Update Form</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../css/main.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="sweetalert.min.js"></script>
+    <script src="../js/sweetalert.min.js"></script>
 
     <style>
         body {
@@ -50,23 +53,29 @@ $view = $_GET['view'];
 
 <body>
     <nav id="navbar" class="navbar smart-scroll navbar-expand-lg navbar-info">
-        <a class="navbar-brand mr-auto" href="#"><img src="images/logo12.png" height="60px" width="60px"></a>
+        <a class="navbar-brand mr-auto" href="../index.php"><img src="../images/logo12.png" height="60px" width="60px"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span><i class="fas fa-caret-down fa-lg"></i></span>
+        </button>
         <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="../index.php"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
+
+
+            <div class="nav-item">
+                <div>
+                    <h5 style="text-transform:uppercase;" class="">WELCOME <?php echo $current_user;  ?>!!!</h5>
+                </div>
+                <div>
+                    <a href="../logout.php" class="btn btn-danger btn-block btn-sm">Logout</a>
+                </div>
+            </div>
         </div>
 
-        <div>
-            <div class="">
-                <h5 style="text-transform:uppercase;" class="">WELCOME <?php echo $current_user;  ?>!!!</h5>
-            </div>
-            <div>
-                <a href="logout.php" class="btn btn-danger btn-block btn-sm">Logout</a>
-            </div>
-        </div>
+
     </nav>
 
 
@@ -127,7 +136,7 @@ $view = $_GET['view'];
 
 
 
-    <script src="main.js"></script>
+    <script src="../js/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">

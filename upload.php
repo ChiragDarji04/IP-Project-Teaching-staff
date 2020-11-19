@@ -261,3 +261,32 @@ if(isset($_POST['membership-submit']))
     }
     header("location: form.php");
 }
+
+if(isset($_POST['subject-submit']))
+{
+
+   $sub = $_POST['sub'];
+    $course_cd = $_POST['course_cd'];
+    $sem = $_POST['sem'];
+    $year =$_POST['year'];
+    // $upload = $_POST['membership-upload'];
+
+
+    $insert = "insert into subject(sub,course_cd,sem,year) values ('$sub','$course_cd','$sem','$year')";
+    if(mysqli_query($link, $insert))
+    {
+        echo  "<script>
+      swal({
+        title: 'Successfully Uploaded',
+        text: 'Document Added to Table',
+        icon: 'success',
+        button: 'Ok!',
+      });
+      </script>";
+    }
+    else
+    {
+        echo 'Error: '.mysqli_error($link);
+    }
+    header("location: form.php");
+}
